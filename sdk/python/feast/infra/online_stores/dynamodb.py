@@ -253,7 +253,9 @@ class DynamoDBOnlineStore(OnlineStore):
                         val = ValueProto()
                         val.ParseFromString(value_bin.value)
                         res[feature_name] = val
-                    batch_result.append((datetime.fromisoformat(tbl_res["event_ts"]), res))
+                    batch_result.append(
+                        (datetime.fromisoformat(tbl_res["event_ts"]), res)
+                    )
                     entity_idx += 1
 
             # Not all entities in a batch may have responses
